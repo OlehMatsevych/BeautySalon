@@ -1,0 +1,57 @@
+.App-header {
+    padding-top: 30px;
+    background-color: #3d4d6b;
+    display: flex;
+    flex-direction: row;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.NavbarLink {
+    border-radius: 100px;
+    overflow: hidden;
+    color:white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.2rem;
+    position: relative;
+    float: left;
+    padding-left: 20px;
+  }
+  
+.NavbarLink:hover {
+    background-color: rgb(216, 191, 47);
+    transform: scale(1.1);
+    transition: none;
+    border-bottom: 2px solid #b66c6d;
+}
+
+.dropdown{
+    width: 65%;
+    position: relative;
+    list-style-type: none;
+    float: left;
+    overflow: hidden;
+}
+
+.nav-right{
+    position: relative;
+    float: right;
+}
+.nav-logo{
+    padding-left:15px;
+    float: left;
+    text-align: center;
+    font-size: 30px;
+}
+.dropdown-content{
+    text-decoration: none;
+}
+.drop-btn{
+    display: none;
+    cursor: pointer;
+}
+.Navbar{
+    text-decoration: none;
+    color:white;
+}
