@@ -56,14 +56,21 @@ export default class Orderlist extends Component{
         db.collection('orders').get().then(
             (QuerySnapshot) => {
                 QuerySnapshot.forEach((doc) => {
-                    let orderitem = {
-                        id: doc.id,
-                        date: doc.data().date,
-                        time: doc.data().time,
-                        employee: doc.data().employee, 
-                        procedure: doc.data().procedure
-                    };
-                    orderlist.push(orderitem);
+                    console.log('*******************************')
+                    console.log(doc.data().customerid)
+                    console.log(this.props._user)
+                    console.log('*******************************')
+
+                    if(doc.data().customerid == this.props._user){
+                        let orderitem = {
+                            id: doc.id,
+                            date: doc.data().date,
+                            time: doc.data().time,
+                            employee: doc.data().employee, 
+                            procedure: doc.data().procedure
+                        };
+                        orderlist.push(orderitem);
+                    }
                 })
             }
         ).then((e)=> {

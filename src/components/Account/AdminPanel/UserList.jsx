@@ -1,10 +1,8 @@
-
-import React, { Component } from 'react';
+import React, { Component, useEffect  } from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
 
 import { db } from '../../../firebase_config/config';
 
-var dataset = []
 
 class UserList extends Component {
     constructor(props) {
@@ -20,14 +18,6 @@ class UserList extends Component {
                 dodList: []
             }
         }
-
-        this.state.user.orderlist1.push({
-            "customerid":"532QAABpbpmo23oDxAEe",
-            "date":"20.04.2021",
-            "time":"10:20",
-            "procedure":"манікюр",
-            "employee": "Оксана Бойко"
-        })
     }
     componentDidMount() {       //примусова функція
         this._loadOrderlist();
@@ -39,7 +29,7 @@ class UserList extends Component {
             (QuerySnapshot) => {
                 QuerySnapshot.forEach((doc) => {
                     this.setState({
-                        customerid: doc.id,
+                        customerid: doc.data().customerid,
                         date: doc.data().date, 
                         time: doc.data().time, 
                         procedure: doc.data().procedure,
@@ -48,7 +38,7 @@ class UserList extends Component {
                     })
                     this.setState({
                         dodList: {
-                        'customerid': doc.id, 
+                        'customerid': doc.data().customerid, 
                         'date': doc.data().date, 
                         'time': doc.data().time, 
                         'procedure': doc.data().procedure,
@@ -57,7 +47,7 @@ class UserList extends Component {
                     
                    this.state.user.orderlist1.push(
                         {
-                        'customerid': doc.id, 
+                        'customerid': doc.data().customerid, 
                         'date': doc.data().date, 
                         'time': doc.data().time, 
                         'procedure': doc.data().procedure,
@@ -66,7 +56,6 @@ class UserList extends Component {
                 })
             }
         )
-        // примусова функція чекати, поки весь масив буде завантажений 
     }
 
     render() {
@@ -81,38 +70,48 @@ export default UserList
 
 const Pagination= (props) => {
     const [datatable, setDatatable] = React.useState({
-        columns: [
-            {
-                label: 'ID',
-                field: 'customerid',
-                width: 270,
-            },
-            {
-                label: 'Дата',
-                field: 'date',
-                width: 270,
-            },
-            {
-                label: 'Час',
-                field: 'time',
-                width: 270,
-            },
-
-            {
-                label: 'Процедури',
-                field: 'procedure',
-                sort: 'asc',
-                width: 100,
-            },
-
-            {
-                label: 'Майстер',
-                field: 'employee',
-                width: 100,
-            },
-        ],
-        rows: props.data
+        columns: [],
+        rows: []
+        
     });
+
+    useEffect(()=>{
+        setDatatable({
+            columns: [
+                {
+                    label: 'ID',
+                    field: 'customerid',
+                    width: 270,
+                },
+                {
+                    label: 'Дата',
+                    field: 'date',
+                    width: 270,
+                },
+                {
+                    label: 'Час',
+                    field: 'time',
+                    width: 270,
+                },
+    
+                {
+                    label: 'Процедури',
+                    field: 'procedure',
+                    sort: 'asc',
+                    width: 100,
+                },
+    
+                {
+                    label: 'Майстер',
+                    field: 'employee',
+                    width: 100,
+                },
+            ],
+            rows: props.data
+        })
+    }, [props]);
+
+
 
     console.log('********************************')
     console.log(datatable.rows)

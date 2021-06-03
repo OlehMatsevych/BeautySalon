@@ -17,7 +17,7 @@ export default class createUser extends React.Component {
 			confirm: this.confirmPassword.value
 		}
 		
-		if(user.password.length<5 || user.password.length>15)
+		if(user.password.length<3 || user.password.length>25)
 		{
 			alert('Щось пішло не так')
 			return;
@@ -36,7 +36,7 @@ export default class createUser extends React.Component {
             		alert('Успіх! Вітаємо')
 				})
 				.catch(function(error) {
-					alert('Щось пішло не так, напевно ваше пароль занадто короткий')
+					alert('Щось пішло не так1')
 				var errorCode = error.code;
 				var errorMessage = error.message;
             
