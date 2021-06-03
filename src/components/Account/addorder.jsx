@@ -63,16 +63,16 @@ export default class AddOrder extends Component{
                 <input type="time"  name='time' placeholder='HH-mm' onChange={this._handleChange} value={this.state.time}  />
                 <div>
                     <p>Виберіть процедуру:</p>
-                    <select onChange={this._handleChange}  className="browser-default custom-select">
+                    <select onChange={this._handleChange}  name='procedure' className="browser-default custom-select">
                         <option onChange={this._handleChange} name='procedure' value='макіяж'>Макіяж</option>
                         <option onChange={this._handleChange} name='procedure' value='зачіска'>Зачіска</option>
-                        <option onChange={this._handleChange} name='procedure' value='соловіча стрижка'>Чоловіча стрижка</option>
+                        <option onChange={this._handleChange} name='procedure' value='чоловіча стрижка'>Чоловіча стрижка</option>
                         <option onChange={this._handleChange} name='procedure' value='манікюр'>Манікюр</option>
                     </select>
                 </div>
                 <p>Виберiть свого майстра:</p>
                 <div>
-                    <select onChange={this._handleChange}  className="browser-default custom-select">
+                    <select onChange={this._handleChange} name='employee' className="browser-default custom-select">
                         <option onChange={this._handleChange} name='employee' value='Надія'>Надія</option>
                         <option onChange={this._handleChange} name='employee' value='Марія'>Марія</option>
                         <option onChange={this._handleChange} name='employee' value='Оксана'>Оксана</option>
